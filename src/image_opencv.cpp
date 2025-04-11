@@ -3,6 +3,12 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "opencv2/opencv.hpp"
+
+// https://stackoverflow.com/questions/64885148/error-iplimage-does-not-name-a-type-when-trying-to-build-darknet-with-opencv
+#include "opencv2/core/core_c.h"
+#include "opencv2/videoio/legacy/constants_c.h"
+#include "opencv2/highgui/highgui_c.h"
+
 #include "image.h"
 
 using namespace cv;
@@ -60,7 +66,9 @@ Mat image_to_mat(image im)
 
 image mat_to_image(Mat m)
 {
-    IplImage ipl = m;
+    // https://stackoverflow.com/questions/64885148/error-iplimage-does-not-name-a-type-when-trying-to-build-darknet-with-opencv
+    // IplImage ipl = m;
+    IplImage ipl = cvIplImage(m);
     image im = ipl_to_image(&ipl);
     rgbgr_image(im);
     return im;
