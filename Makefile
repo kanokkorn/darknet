@@ -23,10 +23,10 @@ OBJDIR=./obj/
 CC=clang
 CPP=clang++
 NVCC=nvcc 
-AR=ar
+AR=llvm-ar
 ARFLAGS=rcs
 OPTS=-Ofast
-LDFLAGS= -lm -pthread
+LDFLAGS= -lm -pthread -fuse-ld=lld
 COMMON= -Iinclude/ -Isrc/
 CFLAGS=-Wall -Wno-unused-result -Wno-unknown-pragmas -Wfatal-errors -fPIC
 
